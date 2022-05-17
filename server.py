@@ -19,6 +19,7 @@ def save_form():
 
     print(data['name'])
     print(data['email'])
+    print(data['btn_val'])
     
     return HTTPResponse(status=200)
 
