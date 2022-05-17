@@ -25,13 +25,48 @@
 <body>
 
     <input class="mt center" type="text" id="name" placeholder="Name"> <br>
-    <input class="mt center" type="text" id="email" placeholder="Email"> <br>
+    <input class="mt center" type="text" id="email" placeholder="Email"><br>
+    <input class="mt center" type="text" id="btn-val" placeholder="Send btn value"><br>
+    <button class="mt center" onclick="send_btn_val()">
+        Send Button Value
+    </button>
     <button class="mt center" onclick="submit_data()">
         SUBMIT
     </button>
 
 
     <script>
+
+        function send_btn_val() {
+            $("#btn-val").val("test value");
+
+            let name = $("#name").val();
+            let email = $("#email").val();
+            let btn_val = $("#btn-val").val();
+
+            console.log(name, email, btn_val);
+            
+            // JSON variable will be pushed into server via ajax
+            let info = {
+                'name': name,
+                'email': email,
+                'btn_val': btn_val
+            };
+
+            // Sending POST request to the bottle server
+            // will send a JSON data
+            $.ajax({
+                url: "/post",
+                contentType: "application/json", // post request data type
+                dataType: "text", // Server response type
+                type: "POST",
+                data: JSON.stringify(info),
+                success: function (result) {
+                    alert(result);
+                }
+            });
+        }
+
         function submit_data() {
             let name = $("#name").val();
             let email = $("#email").val();
@@ -56,8 +91,6 @@
                     alert(result);
                 }
             });
-
-
         }
     </script>
 
