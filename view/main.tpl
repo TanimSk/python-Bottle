@@ -13,7 +13,6 @@
         .mt {
             margin-top: 1rem;
         }
-
         .center {
             text-align: center;
             margin: auto;
@@ -26,24 +25,23 @@
 
     <input class="mt center" type="text" id="name" placeholder="Name"> <br>
     <input class="mt center" type="text" id="email" placeholder="Email"><br>
-    <input class="mt center" type="text" id="btn-val" placeholder="Send btn value"><br>
-    <button class="mt center" onclick="send_btn_val()">
+
+
+    <button class="mt center" onclick="send_btn_val(this.value)" value="30">
         Send Button Value
     </button>
+
     <button class="mt center" onclick="submit_data()">
         SUBMIT
     </button>
 
 
     <script>
-
-        function send_btn_val() {
-            $("#btn-val").val("test value");
+        function send_btn_val(val) {
 
             let name = $("#name").val();
             let email = $("#email").val();
-            let btn_val = $("#btn-val").val();
-
+            let btn_val = val;
             console.log(name, email, btn_val);
             
             // JSON variable will be pushed into server via ajax
@@ -52,7 +50,6 @@
                 'email': email,
                 'btn_val': btn_val
             };
-
             // Sending POST request to the bottle server
             // will send a JSON data
             $.ajax({
@@ -67,11 +64,9 @@
                 }
             });
         }
-
         function submit_data() {
             let name = $("#name").val();
             let email = $("#email").val();
-
             console.log(name, email);
             
             // JSON variable will be pushed into server via ajax
@@ -79,7 +74,6 @@
                 'name': name,
                 'email': email
             };
-
             // Sending POST request to the bottle server
             // will send a JSON data
             $.ajax({
