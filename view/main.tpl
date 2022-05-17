@@ -59,7 +59,6 @@
                 type: "POST",
                 data: JSON.stringify(info),
                 success: function (result) {
-                    $("#btn-val").val("");
                     alert(result);
                 }
             });
