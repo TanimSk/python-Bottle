@@ -1,6 +1,5 @@
 from bottle import Bottle, run, jinja2_template, TEMPLATE_PATH, request, HTTPResponse
 import os
-import json
 
 # TEMPLATE_PATH  -- specify path of template. Bottle will look into view folder for *.tpl files
 TEMPLATE_PATH.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "view")))
